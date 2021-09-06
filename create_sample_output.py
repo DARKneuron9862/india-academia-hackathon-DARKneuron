@@ -1,3 +1,4 @@
+import tensorflow as tf
 import random
 import json
 # from utils.io import write_json
@@ -16,6 +17,7 @@ def read_json(filename):
 
 def generate_sample_file(filename):
     res = {}
+    DARKnet=tf.keras.models.load_model('DARKnet')
     for i in range(1,99):
         image_no = str(i) + '.jpg'
         image=read_img('test/'+image_no)
@@ -27,4 +29,6 @@ def generate_sample_file(filename):
     write_json(filename, res)
 
 if __name__ == '__main__':
+    
     generate_sample_file('./sample_result1.json')
+
